@@ -2,19 +2,20 @@ package noeman.lecture.youtube.data;
 
 import android.graphics.drawable.Drawable;
 
-public class ThumbnailData extends MainData{
+public class AdData extends MainData{
     public Drawable thumbnail;
-    public Drawable profile;
 
     public String title;
     public String info;
-    public int time;
 
-    public ThumbnailData(Drawable thumbnail, Drawable profile, String title, String info, int time){
+    public float rating;
+    public String charge;
+
+    public AdData(Drawable thumbnail, String title, String info, float rating, String charge){
         this.thumbnail = thumbnail;
-        this.profile = profile;
         this.title = title;
         this.info = info;
-        this.time = time;
+        this.rating = rating;
+        this.charge = charge;
     }
 }

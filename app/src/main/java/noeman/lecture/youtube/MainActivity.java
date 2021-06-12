@@ -9,16 +9,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import noeman.lecture.youtube.data.AdData;
+import noeman.lecture.youtube.data.MainData;
 import noeman.lecture.youtube.data.ThumbnailData;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ArrayList<ThumbnailData> datas = new ArrayList<>();
+    private ArrayList<MainData> datas = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         datas.add(new ThumbnailData(
                 ResourcesCompat.getDrawable(getResources(), R.drawable.thumbnail00, null),
@@ -34,6 +37,14 @@ public class MainActivity extends AppCompatActivity {
                 "Title - 01",
                 "info01 - asdf - fdsa",
                 12 * 60
+        ));
+
+        datas.add(new AdData(
+                ResourcesCompat.getDrawable(getResources(), R.drawable.thumbnail00, null),
+                "Title - 00",
+                "info - asdf - fdsa",
+                4.5f,
+                "free"
         ));
 
         datas.add(new ThumbnailData(
