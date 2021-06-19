@@ -54,21 +54,6 @@
             app:layout_constraintLeft_toLeftOf="@+id/title"
             app:layout_constraintTop_toBottomOf="@+id/title" />
 
-
-    <TextView
-            android:id="@+id/time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="#b000"
-            android:paddingHorizontal="3dp"
-            android:text="6:00"
-            android:textColor="#fff"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/thumbnail_img"
-            app:layout_constraintRight_toRightOf="@+id/thumbnail_img" />
-
     <ImageView
             android:id="@+id/menu"
             android:layout_width="wrap_content"
@@ -97,15 +82,17 @@
 
 
         <TextView
+                android:id="@+id/rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="4.5★ 무료"
+                android:text="4.5★"
                 android:paddingVertical="3dp"
                 android:paddingHorizontal="10dp"
                 android:layout_marginLeft="10dp"/>
 
 
         <TextView
+                android:id="@+id/charge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="무료"

@@ -11,6 +11,8 @@ import java.util.ArrayList;
 
 import noeman.lecture.youtube.data.AdData;
 import noeman.lecture.youtube.data.MainData;
+import noeman.lecture.youtube.data.SmallAdData;
+import noeman.lecture.youtube.data.SmallAdListData;
 import noeman.lecture.youtube.data.ThumbnailData;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        datas.add(SmallAdListData.getSample(getResources()));
 
         datas.add(new ThumbnailData(
                 ResourcesCompat.getDrawable(getResources(), R.drawable.thumbnail00, null),

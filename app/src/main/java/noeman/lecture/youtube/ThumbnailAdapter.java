@@ -12,9 +12,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.SimpleDateFormat;
@@ -22,6 +24,7 @@ import java.util.List;
 
 import noeman.lecture.youtube.data.AdData;
 import noeman.lecture.youtube.data.MainData;
+import noeman.lecture.youtube.data.SmallAdListData;
 import noeman.lecture.youtube.data.ThumbnailData;
 
 public class ThumbnailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -38,6 +41,9 @@ public class ThumbnailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         if(viewType == 1){
             View v = inflater.inflate(R.layout.item_ad_thumbnail, parent, false);
             return new AdViewHolder(v);
+        }else if(viewType == 2){
+            View v = inflater.inflate(R.layout.item_ad_list, parent, false);
+            return new SmallAdListViewHolder(v);
         }
 
         View v = inflater.inflate(R.layout.item_thumbnail, parent, false);
@@ -50,6 +56,8 @@ public class ThumbnailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         if(item instanceof AdData){
             return 1;
+        } else if(item instanceof SmallAdListData){
+            return 2;
         }
 
         return 0;
@@ -81,6 +89,26 @@ public class ThumbnailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         }else if(holder instanceof AdViewHolder){
             AdViewHolder h = (AdViewHolder) holder;
             AdData item = (AdData) datas.get(position);
+
+            h.thumbnailImg.setImageDrawable(item.thumbnail);
+
+            h.title.setText(item.title);
+            h.info.setText(item.info);
+
+            h.charge.setText(item.charge);
+            h.rating.setText(item.rating + "★");
+        }else if(holder instanceof SmallAdListViewHolder){
+            SmallAdListViewHolder h = (SmallAdListViewHolder) holder;
+            SmallAdListData item = (SmallAdListData) datas.get(position);
+
+            LinearLayoutManager layoutManager = new LinearLayoutManager(
+                    h.itemView.getContext(),
+                    LinearLayoutManager.HORIZONTAL,
+                    false
+            );
+            h.recyclerView.setLayoutManager(layoutManager);
+
+
         }
 
 
@@ -148,9 +176,28 @@ public class ThumbnailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     }
 
     public class AdViewHolder extends RecyclerView.ViewHolder {
+        private ImageView thumbnailImg;
+        private TextView title;
+        private TextView info;
+        private TextView rating;
+        private TextView charge;
 
         public AdViewHolder(@NonNull View itemView) {
             super(itemView);
+            thumbnailImg = itemView.findViewById(R.id.thumbnail_img);
+            title = itemView.findViewById(R.id.title);
+            info = itemView.findViewById(R.id.info);
+            rating = itemView.findViewById(R.id.rating);
+            charge = itemView.findViewById(R.id.charge);
+
+        }
+    }
+
+    public class SmallAdListViewHolder extends RecyclerView.ViewHolder{
+        private RecyclerView recyclerView;
+        public SmallAdListViewHolder(@NonNull View itemView) {
+            super(itemView);
+            recyclerView = itemView.findViewById(R.id.recyclerview);
         }
     }
 }
